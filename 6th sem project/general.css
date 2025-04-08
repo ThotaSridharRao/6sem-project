@@ -1,0 +1,12 @@
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto; /* centers horizontally */
+    padding: 0 20px; /* optional: gives side padding on small screens */
+    box-sizing: border-box;
+  }
+body{
+    font-family: Roboto;
+    /* background-color: gray; */
+    height: 3000px;
+}
