@@ -115,6 +115,7 @@
   height: auto; /* allow flexibility */
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 30px;;
 }
@@ -133,6 +134,17 @@
   padding: 20px;
   box-sizing: border-box;
 }
+.image-preview {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: white;
+}
+
 .upload-icon {
   height: 80px;
   width: 80px;
