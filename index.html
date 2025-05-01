@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+      <div class="container">
+        <header class="header">
+            <div class="left">
+                <div class="menu">
+                    <img src="icons/menu-svgrepo-com.svg" class="menu-icon">
+                </div>
+                <div class="website-icon-name">
+                    <div>
+                        <img src="icons/tree-svgrepo-com.svg" class="website-icon">
+                    </div>
+                    <div class="website-name">
+                        KnowYourCrop.com
+                    </div>
+                </div>
+            </div>
+            <div class="center">
+
+            </div>
+            <div class="right">
+                <button class="share-button">
+                    <img src="icons/share-icon.svg" class="share-icon"> 
+                    Share
+                </button>
+                <button class="login-button">Login</button>
+            </div>
+        </header>
+        <div class="content">
+            <div class="model-name">
+                Plant Disease Classifier
+            </div>
+            <div class="model-description">
+            Upload a plant leaf image to check for disease instantly.
+            </div>
+        </div>
+        <div class="input-container">
+            <div class="input-area">
+              <img src="icons/mountains-sun-svgrepo-com.svg" class="upload-icon" />
+          
+              <div class="upload-buttons">
+                <!-- Hidden input -->
+                <input type="file" id="image-upload" accept="image/*" hidden />
+          
+                <!-- Styled label as a button -->
+                <label for="image-upload" class="select-image-btn">
+                  📁 Select Image
+                </label>
+          
+                <!-- Dropdown button (functionality can be added later) -->
+                <button class="dropdown-btn">▼</button>
+              </div>
+          
+              <div class="upload-hint">or, drag and drop an image here</div>
+            </div>
+        </div>
+        <div class="about-model">
+            <div class="about-model-point">
+              <img src="path-to-image.svg" alt="Icon" class="about-model-icon">
+              <div class="about-model-title">Lightning Fast</div>
+              <div class="about-model-description">
+                The model is optimized for speed, ensuring quick predictions without compromising accuracy.
+              </div>
+            </div>
+          
+            <div class="about-model-point">
+              <img src="path-to-image.svg" alt="Icon" class="about-model-icon">
+              <div class="about-model-title">Accurate Results</div>
+              <div class="about-model-description">
+                Achieves high accuracy using deep learning trained on thousands of leaf samples.
+              </div>
+            </div>
+          
+            <div class="about-model-point">
+              <img src="path-to-image.svg" alt="Icon" class="about-model-icon">
+              <div class="about-model-title">User Friendly</div>
+              <div class="about-model-description">
+                Simple interface lets anyone upload and get results in seconds.
+              </div>
+            </div>
+          
+            <div class="about-model-point">
+              <img src="path-to-image.svg" alt="Icon" class="about-model-icon">
+              <div class="about-model-title">Cross Platform</div>
+              <div class="about-model-description">
+                Works seamlessly on mobile, tablet, and desktop browsers.
+              </div>
+            </div>
+          
+            <div class="about-model-point">
+              <img src="path-to-image.svg" alt="Icon" class="about-model-icon">
+              <div class="about-model-title">Secure</div>
+              <div class="about-model-description">
+                All image processing happens in-browser, ensuring user privacy.
+              </div>
+            </div>
+          
+            <div class="about-model-point">
+              <img src="path-to-image.svg" alt="Icon" class="about-model-icon">
+              <div class="about-model-title">Offline Ready</div>
+              <div class="about-model-description">
+                Model can be cached for offline use, allowing diagnoses without internet.
+              </div>
+            </div>
+          </div>
+          
+        <div class="how-to-wrapper">
+            <div class="how-to-box">
+              <div class="how-to-heading">How to use Plant Disease Classifier?</div>
+              <div class="how-to-use">
+                <p>1. Click on the "Select Image" button to upload a plant leaf image from your device.</p>
+                <p>2. Alternatively, you can drag and drop an image into the designated area.</p>
+                <p>3. Once the image is uploaded, the model will analyze it for any potential diseases.</p>
+              </div>
+            </div>
+          </div>
+      </div>
+          
+        
+      <script src="script.js">
+      </script>  
+
+    </body>
+</html>
