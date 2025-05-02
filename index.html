@@ -10,9 +10,11 @@
       <div class="container">
         <header class="header">
             <div class="left">
-                <div class="menu">
-                    <img src="icons/menu-svgrepo-com.svg" class="menu-icon">
-                </div>
+              <div class="menu" id="menu-toggle">
+                <img src="icons/menu-svgrepo-com.svg" class="menu-icon" alt="Menu Icon" />
+              </div>
+              
+
                 <div class="website-icon-name">
                     <div>
                         <img src="icons/tree-svgrepo-com.svg" class="website-icon">
@@ -27,12 +29,31 @@
             </div>
             <div class="right">
                 <button class="share-button">
-                    <img src="icons/share-icon.svg" class="share-icon"> 
+                    <img src="icons/share-circle-svgrepo-com.svg" class="share-icon"> 
                     Share
                 </button>
-                <button class="login-button">Login</button>
+                <button class="login-button">
+                  <img src="icons/person-svgrepo-com.svg" class="login-icon" alt="">
+                  Login</button>
             </div>
         </header>
+        <!-- Sidebar: must be in the DOM for the JS/CSS to work -->
+        <div class="sidebar" id="sidebar">
+          <div class="sidebar-content">
+            <!-- This button will close the sidebar -->
+            <button class="close-sidebar" id="close-sidebar">&times;</button>
+          
+            <ul class="sidebar-menu">
+              <li class="active"><a href="#">Plant Disease Classifier</a></li>
+              <li><a href="#">Solution Recommender</a></li>
+              <li><a href="#">Results</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          
+        </div>
+
         <div class="content">
             <div class="model-name">
                 Plant Disease Classifier
@@ -61,9 +82,10 @@
               <div class="upload-hint">or, drag and drop an image here</div>
             </div>
             <div class="upload-remove-buttons">
-              <button>Upload Image</button>
-              <button>Remove Image</button>
+              <button class="upload-btn">Upload Image</button>
+              <button class="remove-btn">Remove Image</button>
             </div>
+            
         </div>
         <div class="about-model">
             <div class="about-model-point">

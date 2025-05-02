@@ -1,9 +1,10 @@
-/*header*/
-.header{
-  height: 70px;
-  background-color: whitesmoke;
-  position: fixed;
+/* Updated Theme CSS with Image-Based Color Palette */
 
+/*header*/
+.header {
+  height: 70px;
+  background-color: #f4f8fb;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -13,74 +14,145 @@
   align-items: center;
 }
 
-.left{
+.left {
   width: 350px;
   height: 100%;
   display: flex;
   align-items: center;
 }
-.menu-icon{
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #ffffff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.sidebar-open {
+  transform: translateX(0);
+}
+
+li {
+  padding-left: 10px;
+}
+
+.close-sidebar {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.sidebar-menu li {
+  margin: 15px 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-menu a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #2b2b2b;
+}
+
+.sidebar-menu li.active {
+  background-color: #e6f0fa;
+  padding: 10px 20px 10px 5px;
+}
+
+.sidebar-menu li.active a {
+  color: #1476e1;
+  font-size: 20px;
+}
+
+.menu-icon {
+  cursor: pointer;
   height: 50px;
   width: 50px;
   margin-left: 20px;
   margin-right: 10px;
 }
-.menu-icon:hover{
-  cursor: pointer;
+
+.menu-icon:hover {
   opacity: 0.8;
 }
-.website-icon-name{
+
+.website-icon-name {
   width: 350px;
   height: 100%;
   display: flex;
-  align-items: center;margin-left: 10px;
-;
+  align-items: center;
+  margin-left: 10px;
 }
-.website-icon{
+
+.website-icon {
   height: 50px;
   width: 50px;
-  
   margin-right: 10px;
 }
-.website-name{
+
+.website-name {
   font-size: 20px;
   font-weight: 600;
   color: black;
 }
-.right{
+
+.right {
   width: 250px;
-  
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.login-button{
-  border: 1px solid lightgray;
-  cursor: pointer;
-  font-size: 16px;
-  color: black;
-  padding: 10px 20px;
-  border-radius: 25px;
-  margin-left: 10px;
-}
-.right button:hover{
-  opacity: 0.8;
-}
-.share-button{
+
+.login-button,
+.share-button {
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 6px;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 25px;
-  border: 1px solid lightgray;
+  border: 1px solid #1476e1;
+  background-color: white;
+  color: #1476e1;
   cursor: pointer;
 }
-.share-icon{
-  background-color: transparent; height: 24px; width: 24px; margin-right: 6px;
+.login-button{
+  margin-left: 10px;
 }
 
-/*Content*/
+.right button:hover {
+  background-color: #1476e1;
+  color: white;
+}
+
+.share-icon,
+.login-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.login-icon {
+  width: 20px;
+  height: 20px;
+}
+
 .content {
   width: 100%;
   height: 300px;
@@ -112,28 +184,29 @@
   margin-top: 50px;
   width: 100%;
   background-color: white;
-  height: auto; /* allow flexibility */
+  height: auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 30px;;
+  margin-bottom: 30px;
 }
 
 .input-area {
   width: 80%;
   max-width: 1200px;
   height: 600px;
-  border: 15px dashed lightblue;
+  border: 5px solid #000d1a;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #62dfca;
+  background-color: #ee1fd9;
   border-radius: 12px;
   padding: 20px;
   box-sizing: border-box;
 }
+
 .image-preview {
   width: 100%;
   max-width: 300px;
@@ -145,6 +218,40 @@
   background-color: white;
 }
 
+.upload-remove-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 100px;
+  margin-top: 40px;
+}
+
+.upload-btn,
+.remove-btn {
+  padding: 16px 28px;
+  font-size: 18px;
+  font-weight: 600;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.upload-btn {
+  background-color: #1476e1;
+}
+
+.remove-btn {
+  background-color: #ab47bc;
+}
+
+.upload-btn:hover,
+.remove-btn:hover,
+.upload-btn:active,
+.remove-btn:active {
+  opacity: 0.7;
+}
+
 .upload-icon {
   height: 80px;
   width: 80px;
@@ -154,9 +261,11 @@
   object-fit: cover;
   margin-bottom: 30px;
 }
+
 .custom-file-upload input[type="file"] {
-  display: none; /* Hides the default file input */
+  display: none;
 }
+
 .select-image-btn,
 .dropdown-btn {
   height: 70px;
@@ -164,29 +273,32 @@
   cursor: pointer;
   font-size: 22px;
   font-weight: 600;
-  color: black;
-  padding: 20px 20px; /* Remove vertical padding */
+  color: #2b2b2b;
+  padding: 20px 20px;
   border-radius: 8px;
   margin-top: 20px;
-  background-color: white;
-  box-sizing: border-box; /* ✅ fixes sizing issues */
+  background-color: #f4f8fb;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: -10px;
 }
-.upload-buttons{
-  display:flex;
-  gap:0px;
+
+.upload-buttons {
+  display: flex;
+  gap: 0px;
 }
-.upload-hint{
+
+.upload-hint {
   font-size: 22px;
   font-weight: 600;
-  color: black;
+  color: white;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 .how-to-wrapper {
   width: 100%;
   height: auto;
@@ -195,7 +307,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
-  margin-top:200px ;
+  margin-top: 200px;
 }
 
 .how-to-box {
@@ -214,7 +326,7 @@
 .how-to-heading {
   font-size: 24px;
   font-weight: 700;
-  color: #2c3e50;
+  color: #1476e1;
   margin-bottom: 30px;
 }
 
@@ -232,6 +344,7 @@
   margin: 0;
   margin-bottom: 14px;
 }
+
 .about-model {
   width: 100%;
   background-color: white;
@@ -245,14 +358,14 @@
 }
 
 .about-model-point {
-  background-color: #f9fbff;
+  background-color: #ffffff;
   padding: 24px;
   border-radius: 12px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 14px rgba(20, 118, 225, 0.1);
 }
 
 .about-model-icon {
@@ -264,7 +377,7 @@
 .about-model-title {
   font-size: 20px;
   font-weight: 700;
-  color: #2b2b2b;
+  color: #1476e1;
   margin-bottom: 10px;
 }
 
@@ -275,17 +388,17 @@
   text-align: center;
 }
 
-/*general.css*/
 .container {
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto; /* centers horizontally */
-  padding: 0 20px; /* optional: gives side padding on small screens */
+  margin: 0 auto;
+  padding: 0 20px;
   box-sizing: border-box;
 }
-body{
+
+body {
+  background-color: white;
   font-family: Roboto;
-  /* background-color: gray; */
   height: 3000px;
   padding-top: 70px;
 }
