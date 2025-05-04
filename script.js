@@ -1,96 +1,71 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Image upload and removal functionality
-  const imageInput = document.getElementById("image-upload");
-  const inputArea = document.querySelector(".input-area");
-  const uploadBtn = document.querySelector(".upload-btn");
-  const removeBtn = document.querySelector(".remove-btn");
+  const imageUploadInput = document.getElementById("image-upload");
+  const uploadButton = document.querySelector(".upload-btn");
+  const removeButton = document.querySelector(".remove-btn");
+  const resultDiv = document.querySelector(".prediction");
+  const resultSection = document.querySelector(".result");
+  const fileInput = document.querySelector("#image-upload");
 
-  // Save initial input area content for reset
-  const originalUploadUI = inputArea.innerHTML;
+  let uploadedImage = null;
 
-  // Bind the file input listener
-  function bindFileInputListener() {
-    imageInput.addEventListener("change", function () {
-      if (imageInput.files && imageInput.files[0]) {
-        displayImage(imageInput.files[0]);
+  // Handle image selection
+  imageUploadInput.addEventListener("change", function (e) {
+      uploadedImage = e.target.files[0];
+      if (uploadedImage) {
+          // Preview image (optional)
+          const imgPreview = document.createElement("img");
+          imgPreview.src = URL.createObjectURL(uploadedImage);
+          imgPreview.alt = "Uploaded Image Preview";
+          imgPreview.classList.add("preview-image");
+
+          // Show image preview
+          const dropArea = document.getElementById("drop-area");
+          dropArea.innerHTML = ""; // Clear previous content
+          dropArea.appendChild(imgPreview);
       }
-    });
-  }
-
-  // Display the uploaded image
-  function displayImage(file) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      inputArea.innerHTML = "";
-      const imgPreview = document.createElement("img");
-      imgPreview.src = e.target.result;
-      imgPreview.alt = "Uploaded Preview";
-      imgPreview.className = "image-preview";
-      inputArea.appendChild(imgPreview);
-    };
-    reader.readAsDataURL(file);
-  }
-
-  // Initialize image input listener
-  bindFileInputListener();
-
-  // Drag and drop support
-  inputArea.addEventListener("dragover", function (e) {
-    e.preventDefault();
-    inputArea.classList.add("drag-over");
   });
 
-  inputArea.addEventListener("dragleave", function () {
-    inputArea.classList.remove("drag-over");
+  // Handle the "Upload Image" button click
+  uploadButton.addEventListener("click", async function () {
+      if (!uploadedImage) {
+          alert("Please select an image first.");
+          return;
+      }
+
+      const formData = new FormData();
+      formData.append("file", uploadedImage);
+
+      // Send image to backend API
+      try {
+          const response = await fetch("https://backend-692f.onrender.com/predict", {
+              method: "POST",
+              body: formData
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+              // Show the prediction result
+              resultDiv.textContent = `Prediction: ${result.prediction} (Confidence: ${result.confidence})`;
+              resultSection.style.display = "block";
+          } else {
+              alert("Error with the model: " + result.error || "Unknown error");
+          }
+      } catch (error) {
+          console.error("Error during image upload:", error);
+          alert("Failed to upload image. Please try again.");
+      }
   });
 
-  inputArea.addEventListener("drop", function (e) {
-    e.preventDefault();
-    inputArea.classList.remove("drag-over");
-    const droppedFile = e.dataTransfer.files[0];
-    if (droppedFile && droppedFile.type.startsWith("image/")) {
-      displayImage(droppedFile);
-    }
+  // Handle the "Remove Image" button click
+  removeButton.addEventListener("click", function () {
+      uploadedImage = null;
+      fileInput.value = null; // Reset file input
+
+      // Clear preview and result
+      const dropArea = document.getElementById("drop-area");
+      dropArea.innerHTML = `<img src="icons/mountains-sun-svgrepo-com.svg" class="upload-icon" />`;
+      resultDiv.textContent = "";
+      resultSection.style.display = "none"; // Hide result section
   });
-
-  // Remove image functionality
-  removeBtn.addEventListener("click", function () {
-    inputArea.innerHTML = originalUploadUI;
-    bindFileInputListener(); // Rebind listener after restoring UI
-  });
-
-  // Placeholder for upload functionality
-  uploadBtn.addEventListener("click", function () {
-    alert("Upload functionality not implemented yet.");
-  });
-
-  // Sidebar functionality
-  const sidebar = document.getElementById("sidebar");
-  const menuIcon = document.querySelector(".menu-icon");
-  const closeSidebar = document.getElementById("close-sidebar");
-
-  // Open sidebar on menu icon click
-  menuIcon.addEventListener("click", function () {
-    sidebar.classList.add("sidebar-open");
-  });
-
-  // Close sidebar on '×' button click
-  closeSidebar.addEventListener("click", function () {
-    sidebar.classList.remove("sidebar-open");
-  });
-
-    const sidebarMenuItems = document.querySelectorAll(".sidebar-menu li");
-  
-    sidebarMenuItems.forEach(function (item) {
-      item.addEventListener("click", function () {
-        // Remove the active class from all items
-        sidebarMenuItems.forEach(function (el) {
-          el.classList.remove("active");
-        });
-  
-        // Add the active class to the clicked item
-        this.classList.add("active");
-      });
-    });
-  
 });
