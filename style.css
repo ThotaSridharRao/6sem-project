@@ -261,6 +261,18 @@ li {
   object-fit: cover;
   margin-bottom: 30px;
 }
+.prediction-box {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: #e6f4ea;
+  color: #2b593e;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
 
 .custom-file-upload input[type="file"] {
   display: none;
