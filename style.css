@@ -215,7 +215,7 @@ li {
   height: auto;
   object-fit: contain;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 8px;
   background-color: transparent;
 }
@@ -264,8 +264,8 @@ li {
   margin-bottom: 30px;
 }
 .prediction-box {
-  margin-top: 12px;
-  padding: 10px 30px;
+  margin-top: 20px;
+  padding: 10px 50px;
   border-radius: 12px;
   background-color: #e6f4ea;
   color: #2b593e;
