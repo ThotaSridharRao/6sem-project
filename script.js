@@ -2,13 +2,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const imageUploadInput = document.getElementById("image-upload");
   const uploadButton = document.querySelector(".upload-btn");
   const removeButton = document.querySelector(".remove-btn");
-  const fileInput = document.querySelector("#image-upload");
   const dropArea = document.getElementById("drop-area");
 
   const preventionBox = document.querySelector(".preventionMethods");
   const preventionList = document.querySelector(".Methods");
 
   let uploadedImage = null;
+
+  // Hide prevention methods box initially
+  preventionBox.style.display = "none";
 
   // Handle image selection
   imageUploadInput.addEventListener("change", function (e) {
@@ -95,20 +97,40 @@ document.addEventListener("DOMContentLoaded", function () {
   removeButton.addEventListener("click", function () {
     uploadedImage = null;
 
-    // Reset file input to allow same image selection again
-    const newInput = fileInput.cloneNode(true);
-    fileInput.parentNode.replaceChild(newInput, fileInput);
+    // Recreate the file input
+    const newInput = document.createElement("input");
+    newInput.type = "file";
+    newInput.accept = "image/*";
+    newInput.id = "image-upload";
+    newInput.classList.add("file-input");
+
+    // Replace the old input
+    imageUploadInput.replaceWith(newInput);
+
+    // Update reference
+    imageUploadInput = newInput;
+
+    // Add change listener again
     newInput.addEventListener("change", function (e) {
-      imageUploadInput.dispatchEvent(new Event("change", { bubbles: true }));
+      uploadedImage = e.target.files[0];
+      if (uploadedImage) {
+        dropArea.innerHTML = "";
+
+        const imgPreview = document.createElement("img");
+        imgPreview.src = URL.createObjectURL(uploadedImage);
+        imgPreview.alt = "Uploaded Image Preview";
+        imgPreview.classList.add("preview-image");
+        dropArea.appendChild(imgPreview);
+      }
     });
 
-    // Clear drop area content
+    // Restore drop area placeholder
     dropArea.innerHTML = `
       <img src="icons/mountains-sun-svgrepo-com.svg" class="upload-icon" />
       <div class="upload-hint">or, drag and drop an image here</div>
     `;
 
-    // Hide prevention methods
+    // Hide prevention box
     preventionBox.style.display = "none";
     preventionList.innerHTML = "";
   });
