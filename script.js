@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const imageUploadInput = document.getElementById("image-upload");
+  let imageUploadInput = document.getElementById("image-upload");
   const uploadButton = document.querySelector(".upload-btn");
   const removeButton = document.querySelector(".remove-btn");
   const dropArea = document.getElementById("drop-area");
