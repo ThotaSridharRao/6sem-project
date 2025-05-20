@@ -353,6 +353,15 @@ li {
   margin-bottom:20px ;
 }
 
+.methods{
+  height: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .how-to-wrapper {
   width: 100%;
