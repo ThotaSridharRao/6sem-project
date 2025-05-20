@@ -353,7 +353,7 @@ li {
   margin-bottom:20px ;
 }
 
-.methods{
+.methods,.preventionMethods{
   height: 400px;
   width: 100%;
   display: flex;
